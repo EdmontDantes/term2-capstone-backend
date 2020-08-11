@@ -9,6 +9,19 @@ const usersRouter = require('./routes/users');
 
 const app = express();
 
+require('dotenv').config();
+
+//Mongoose Connect
+mongoose
+.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+})
+.then(() => {
+  console.log('Mongodb Connected');
+})
+.catch((err) => console.log(`Mongo err: ${err}`));
 
 app.use(logger('dev'));
 app.use(express.json());
