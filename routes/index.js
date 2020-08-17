@@ -11,7 +11,9 @@ router.get('/art-likes', (req, res, next) => {
 });
 
 router.put('/art-likes', (req, res, next) => {
-
+  console.log('Blank route loggged out works');
+  console.log('Req.body passed data', req.body);
+  res.send("I'm a blank put route for now")
   
 });
 
