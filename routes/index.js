@@ -41,4 +41,20 @@ router.put('/art-likes', (req, res, next) => {
   })
 });
 
+
+router.delete('/art-likes/:objectID', async (req, res, next) => {
+  // console.log('Delete route loggged out works initially')
+  // console.log('Req.body passed data', req.body);
+  // res.send("I'm a blank put route for now")
+  try {
+    let { objectID } = req.params;
+    await ArtLikes.findOneAndDelete({ObjectIdAPI: objectID})
+    return res.status(200).json({message: "Successfully removed liked item from DB backend"})
+  } catch (error) {
+    return res.status(500).json({ message: "Sorry your dislike couldn't happen something is wrong with the backend route", error: error})
+  }
+
+
+});
+
 module.exports = router;
