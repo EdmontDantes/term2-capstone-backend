@@ -1,9 +1,8 @@
 const mongoose = require('mongoose')
 
 const ArtLikesSchema = new mongoose.Schema({
-  IdAPI: { type: String },
+  ObjectIdAPI: { type: String },
   likes: { type: Boolean },
-  dislikes: { type: Boolean},
   data: { type: Object }
 
 });
