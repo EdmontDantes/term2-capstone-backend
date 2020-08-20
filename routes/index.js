@@ -36,7 +36,7 @@ router.put('/art-likes', (req, res, next) => {
       console.log('You already liked this art , this is console.log', foundObject);
       return res.status(200).json({message: 'you already liked this art', foundObject: foundObject});
     }
-  }).catch((error) => {
+  }).catch((error) => {n
     return res.status(500).json({ message: "Sorry your save couldn't happen something is wrong with the backend route", error: error})
   })
 });
@@ -55,6 +55,28 @@ router.delete('/art-likes/:objectID', async (req, res, next) => {
   }
 
 
+
+  
 });
+
+router.get('/art-likes/:objectID', async (req, res, next) => {
+  // console.log('Delete route loggged out works initially')
+  // console.log('Req.body passed data', req.body);
+  // res.send("I'm a blank put route for now")
+  try {
+    let { objectID } = req.params;
+    await ArtLikes.findOne({ObjectIdAPI: objectID}).then((foundObject) => {
+      return res.status(200).json({ alreadyLiked: true, objectID: foundObject.objectID })
+    }).catch((error) => console.log(error))
+  } catch (error) {
+    return res.status(500).json({ message: "Sorry your dislike couldn't happen something is wrong with the backend route", error: error})
+  }
+
+
+
+  
+});
+
+
 
 module.exports = router;
