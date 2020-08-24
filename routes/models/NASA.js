@@ -7,4 +7,4 @@ const NASALikesSchema = new mongoose.Schema({
 
 });
 
-module.exports = mongoose.model('ArtLikes', ArtLikesSchema);
+module.exports = mongoose.model('NASALikes', NASALikesSchema);
